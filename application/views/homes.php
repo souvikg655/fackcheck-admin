@@ -4,7 +4,7 @@
   <div class="app-title">
     <div>
       <h1><i class="fa fa-home"></i> Homes</h1>
-      <p>See all homes</p>
+      <p>View all homes</p>
     </div>
         <!-- <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -20,8 +20,8 @@
                 <thead>
                   <tr>
                     <th>Title</th>
+                    <th>Realtor Name</th>
                     <th>Home Details</th>
-                    <th>Beside Road</th>
                     <th>Province</th>
                     <th>Postal Code</th>
                     <th>Address</th>
@@ -37,10 +37,10 @@
                     ?>
                     <tr>
                       <td><?php echo $data[$i]->title; ?></td>
+                      <td><?php echo $data[$i]->name; ?></td>
                       <td>
                         <a class="btn btn-outline-primary" href="javascript:void(0);" target="_blank">Details</a>
                       </td>
-                      <td>YES</td>
                       <td><?php echo $data[$i]->province; ?></td>
                       <td><?php echo $data[$i]->postal; ?></td>
                       <td><?php echo $data[$i]->address; ?></td>
@@ -72,9 +72,9 @@
                                 <?php
                                 if($value == "Pending"){
                                   ?>
-                                  <a class="dropdown-item" href="#">Approved</a>
-                                  <!-- <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#myModal">Rejected</a> -->
-                                  <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item" href="javascript:void(0);" id="user_reject" >Regected</a>
+                                  <a type="button" class="dropdown-item" id="home_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
+
+                                  <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item" href="javascript:void(0);" id="home_reject" >Regected</a>
                                 <?php } ?>
                                 <?php
                                 if($value == "Regected"){
@@ -104,32 +104,19 @@
       </div>
     </main>
 
-    <div class="modal fade" id="myModal" role="dialog">
-
-    </div>
+    <div class="modal fade" id="myModal" role="dialog"></div>
 
     <script type="text/javascript">
       $(document).ready(function(){
-        $("#user_reject").click(function(){
+        $("#home_accept").click(function(){
           var id =  $(this).attr("user_id");
-          var st = '';
-          st = st + '<div class="modal" style="position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1; display: block;"> <div class="modal-dialog" role="document"> <div class="modal-content">  <div class="modal-header"> <h5 class="modal-title">Rejected message </h5> <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> </div> <div class="modal-body form-group"> <input type="hidden" id="user_reject_id" value="'+id+'"> <textarea class="form-control" rows="5" id="comment" name="message" placeholder="Enter message here..."></textarea> </div> <div class="modal-footer"> <button type="button" id="btn_reject" class="btn btn-primary" >Done</button> </div>  </div> </div> </div> </div>';
-
-
-          $("#myModal").html(st).modal('show');
-        });
-        
-        $(document).on('click', '#btn_reject', function(){
-          var message = $.trim($("#comment").val());
-          var user_reject_id = $.trim($("#user_reject_id").val());
-
+          
           var formdata = new FormData();
-          formdata.append("message", message);
-          formdata.append("user_id", user_reject_id);
-          formdata.append("type", "REJECTED");
+          formdata.append("home_id", id);
+          formdata.append("type", "APPROVED");
 
           var ajaxReq = $.ajax({
-            url: '<?php echo base_url()?>user/user_reject',
+            url: '<?php echo base_url()?>homes/home_accept',
             type: 'POST',
             processData: false,
             contentType: false,
@@ -137,7 +124,53 @@
             beforeSend: function (xhr) {
             },
             success: function (data) {
-              //var obj = JSON.parse(data);
+              var obj = JSON.parse(data);
+              if(obj.status){
+                window.location='<?php echo base_url()?>user/homes';
+              }else{
+                toastr["error"]("Failed");
+              }
+            },
+
+          });
+
+        });
+      });
+
+      $(document).ready(function(){
+        $("#home_reject").click(function(){
+          var id =  $(this).attr("user_id");
+          var st = '';
+          st = st + '<div class="modal" style="position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1; display: block;"> <div class="modal-dialog" role="document"> <div class="modal-content">  <div class="modal-header"> <h5 class="modal-title">Rejected message </h5> <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> </div> <div class="modal-body form-group"> <input type="hidden" id="user_reject_id" value="'+id+'"> <textarea class="form-control" rows="5" id="comment" name="message" placeholder="Enter message here..."></textarea> </div> <div class="modal-footer"> <button type="button" class="btn btn-primary btn_reject" >Done</button> </div>  </div> </div> </div> </div>';
+
+
+          $("#myModal").html(st).modal('show');
+        });
+        
+        $(document).on('click', '.btn_reject', function(){
+          var message = $.trim($("#comment").val());
+          var user_reject_id = $.trim($("#user_reject_id").val());
+
+          var formdata = new FormData();
+          formdata.append("message", message);
+          formdata.append("home_id", user_reject_id);
+          formdata.append("type", "REJECTED");
+
+          var ajaxReq = $.ajax({
+            url: '<?php echo base_url()?>homes/home_reject',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: formdata,
+            beforeSend: function (xhr) {
+            },
+            success: function (data) {
+              var obj = JSON.parse(data);
+              if(obj.status){
+                window.location='<?php echo base_url()?>user/homes';
+              }else{
+                toastr["error"]("Failed");
+              }
             },
           });
 

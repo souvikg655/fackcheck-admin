@@ -25,8 +25,7 @@ class Homes extends CI_Controller {
 			$responce['status'] = false;
 			$responce['message'] = "Failed";
 		}
-	//echo (json_encode($responce));
-	print_r($responce['message']);
+	echo (json_encode($responce));
 	}
 
 	public function home_accept()
@@ -44,8 +43,7 @@ class Homes extends CI_Controller {
 			$responce['message'] = "Failed";
 		}
 	
-	//echo (json_encode($responce));
-	print_r($responce['message']);
+	echo (json_encode($responce));
 	}
 
 	

@@ -14,35 +14,35 @@ class User_model extends CI_model {
 
 	public function fetch_homes()
 	{
-		$this -> db -> select('*');
-		$this -> db -> from('homes');
-		$query = $this -> db -> get();
-
-		return $query->result();
+		$this->db->select('homes.*, users.name')
+		->from('homes')
+		->join('users', 'homes.realtor_id = users.id');
+		$result = $this->db->get()->result();
+		return $result;
 	}
 
 	public function user_reject($data)
 	{
 		$user_id = $data['user_id'];
 		$value = [
-		 	'approval' => $data['type'],
+			'approval' => $data['type'],
 			'reject_status' => $data['message']
 		];
 		$this->db->where('id', $user_id);
 		$this->db->update('users', $value);
-	return true;
+		return true;
 	}
 
 	public function user_accept($data)
 	{
 		$user_id = $data['user_id'];
 		$data = [
-		 	'approval' => $data['type']
+			'approval' => $data['type']
 		];
 
 		$this->db->where('id', $user_id);
 		$this->db->update('users', $data);	
-	return true;
+		return true;
 	}
 
 }

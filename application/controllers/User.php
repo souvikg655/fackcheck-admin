@@ -29,6 +29,9 @@ class User extends CI_Controller {
 	{
 		$res = $this->user_model->fetch_homes();
 
+		// print_r($res);
+		// print_r($res[2]->id);
+
 		$data= array();
 		$data['data'] = $res;
 
