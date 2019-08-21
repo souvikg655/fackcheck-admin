@@ -72,14 +72,9 @@
                                 <?php
                                 if($value == "Pending"){
                                   ?>
-                                  <a type="button" class="dropdown-item" id="home_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
+                                  <a type="button" class="dropdown-item" id="home_accept" realtor_id="<?php echo $data[$i]->realtor_id; ?>" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
 
                                   <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item" href="javascript:void(0);" id="home_reject" >Regected</a>
-                                <?php } ?>
-                                <?php
-                                if($value == "Regected"){
-                                  ?>
-                                  <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#myModal">Reason</a>
                                 <?php } ?>
                               </div>
                             </div>
@@ -110,9 +105,11 @@
       $(document).ready(function(){
         $("#home_accept").click(function(){
           var id =  $(this).attr("user_id");
+          var realtor_id =  $(this).attr("realtor_id");
           
           var formdata = new FormData();
           formdata.append("home_id", id);
+          formdata.append("realtor_id", realtor_id);
           formdata.append("type", "APPROVED");
 
           var ajaxReq = $.ajax({

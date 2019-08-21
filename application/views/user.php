@@ -24,6 +24,7 @@
                     <th>Company</th>
                     <th>Identity Image</th>
                     <th>Approval</th>
+                    <th>Points</th>
                     <th>Date & Time</th>
                   </tr>
                 </thead>
@@ -76,6 +77,7 @@
                           <?php } ?>
                         </div>
                       </td>
+                      <td><?php echo $data[$i]->points; ?></td>
                       <?php
                       $dt = new DateTime($data[$i]->created);
                       $date = $dt->format('d-m-Y');

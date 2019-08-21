@@ -31,6 +31,7 @@ class Homes extends CI_Controller {
 	public function home_accept()
 	{
 		$data['home_id'] = $this->input->post('home_id');
+		$data['realtor_id'] = $this->input->post('realtor_id');
 		$data['type'] = $this->input->post('type');
 
 		$res = $this->home_model->home_accept($data);
