@@ -67,9 +67,9 @@
                               <div class="dropdown-menu dropdown-menu-right">
 
                                 <?php if($value == "Pending"){  ?>
-                                  <a type="button" class="dropdown-item" id="user_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
+                                  <a type="button" class="dropdown-item user_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
                                   
-                                  <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item" href="javascript:void(0);" id="user_reject" >Regected</a>
+                                  <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item user_reject" href="javascript:void(0);"  >Regected</a>
                                 <?php } ?>
 
                               </div>
@@ -99,7 +99,7 @@
     </div>
     <script type="text/javascript">
       $(document).ready(function(){
-        $("#user_accept").click(function(){
+        $(".user_accept").click(function(){
           var id =  $(this).attr("user_id");
           
           var formdata = new FormData();
@@ -124,16 +124,16 @@
       });
 
       $(document).ready(function(){
-        $("#user_reject").click(function(){
+        $(".user_reject").click(function(){
           var id =  $(this).attr("user_id");
           var st = '';
-          st = st + '<div class="modal" style="position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1; display: block;"> <div class="modal-dialog" role="document"> <div class="modal-content">  <div class="modal-header"> <h5 class="modal-title">Rejected message </h5> <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> </div> <div class="modal-body form-group"> <input type="hidden" id="user_reject_id" value="'+id+'"> <textarea class="form-control" rows="5" id="comment" name="message" placeholder="Enter message here..."></textarea> </div> <div class="modal-footer"> <button type="button" id="btn_reject" class="btn btn-primary" >Done</button> </div>  </div> </div> </div> </div>';
+          st = st + '<div class="modal" style="position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1; display: block;"> <div class="modal-dialog" role="document"> <div class="modal-content">  <div class="modal-header"> <h5 class="modal-title">Rejected message </h5> <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> </div> <div class="modal-body form-group"> <input type="hidden" id="user_reject_id" value="'+id+'"> <textarea class="form-control" rows="5" id="comment" name="message" placeholder="Enter message here..."></textarea> </div> <div class="modal-footer"> <button type="button" class="btn btn-primary btn_reject" >Done</button> </div>  </div> </div> </div> </div>';
 
 
           $("#myModal").html(st).modal('show');
         });
         
-        $(document).on('click', '#btn_reject', function(){
+        $(document).on('click', '.btn_reject', function(){
           var message = $.trim($("#comment").val());
           var user_reject_id = $.trim($("#user_reject_id").val());
 

@@ -18,7 +18,9 @@
   </section>
   <section class="login-content">
     <div class="logo">
-      <h1>Factckeck</h1>
+      <!-- <h1>Factckeck</h1> -->
+      <!-- <img class="rounded-circle user-image" src="<?php echo base_url()?>assets/img/logo.png"> -->
+     <!--  <a href="<?php echo base_url()?>assets/img/logo.png"></a> -->
     </div>
     <div class="login-box">
 
