@@ -39,7 +39,7 @@
                       <td><?php echo $data[$i]->title; ?></td>
                       <td><?php echo $data[$i]->name; ?></td>
                       <td>
-                        <a class="btn btn-outline-primary" href="javascript:void(0);" target="_blank">Details</a>
+                        <a class="btn btn-outline-primary" href="javascript:void(0);" >Details</a> <!-- target="_blank" -->
                       </td>
                       <td><?php echo $data[$i]->province; ?></td>
                       <td><?php echo $data[$i]->postal; ?></td>

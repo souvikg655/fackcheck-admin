@@ -3,7 +3,7 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-user"></i> Users</h1>
+      <h1><i class="fa fa-users"></i> Users</h1>
       <p>View all users</p>
     </div>
         <!-- <ul class="app-breadcrumb breadcrumb side">
@@ -20,7 +20,7 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Email</th> 
                     <th>Company</th>
                     <th>Identity Image</th>
                     <th>Approval</th>
@@ -56,11 +56,10 @@
 
                       ?>
                       <td>
-
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                           <button class="btn btn-<?php echo $button ?>" type="button"><?php echo $value ?></button>
                           <?php
-                          if($value != "Accepted" && $value != "Regected"){
+                          if($value != "Accepted"){
                             ?>
                             <div class="btn-group" role="group">
                               <button class="btn btn-<?php echo $button ?> dropdown-toggle btn-sm" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
@@ -70,6 +69,9 @@
                                   <a type="button" class="dropdown-item user_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
                                   
                                   <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item user_reject" href="javascript:void(0);"  >Regected</a>
+                                <?php } ?>
+                                <?php if($value == "Regected"){  ?>
+                                  <a type="button" class="dropdown-item user_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
                                 <?php } ?>
 
                               </div>

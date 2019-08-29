@@ -41,7 +41,7 @@
         <button class="app-search__button"><i class="fa fa-search"></i></button>
       </li> -->
       <!--Notification Menu-->
-      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+      <!-- <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a> -->
         <ul class="app-notification dropdown-menu dropdown-menu-right">
           <li class="app-notification__title">You have 4 new notifications.</li>
           <div class="app-notification__content">
@@ -94,7 +94,7 @@
       <!-- Sidebar menu-->
       <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
       <aside class="app-sidebar">
-        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+        <div class="app-sidebar__user"><!-- <img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image"> -->
           <div>
             <p class="app-sidebar__user-name">Admin</p>
             <p class="app-sidebar__user-designation">admin@admin.com</p>

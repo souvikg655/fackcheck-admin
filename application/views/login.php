@@ -25,23 +25,23 @@
     <div class="login-box">
 
       <form class="login-form" action="<?php echo base_url()?>user/users">
-        <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+        <h3 class="login-head"><!-- <i class="fa fa-lg fa-fw fa-user"> --></i>SIGN IN</h3>
         <div class="form-group">
           <label class="control-label">USERNAME</label>
-          <input class="form-control" type="text" id="email" placeholder="Email" autofocus>
+          <input class="form-control loginform" type="text" id="email" placeholder="Email" autofocus>
         </div>
         <div class="form-group">
           <label class="control-label">PASSWORD</label>
-          <input class="form-control" type="password" id="password" placeholder="Password">
+          <input class="form-control loginform" type="password" id="password" placeholder="Password">
         </div>
         <div class="form-group">
           <div class="utility">
             <div class="animated-checkbox">
-              <label>
+              <!-- <label>
                 <input type="checkbox"><span class="label-text">Stay Signed in</span>
-              </label>
+              </label> -->
             </div>
-            <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Forgot Password ?</a></p>
+            <!-- <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Forgot Password ?</a></p> -->
           </div>
         </div>
         <div class="form-group btn-container">
@@ -83,6 +83,12 @@
   <script src="<?php echo base_url()?>assets/js/toastr.js"></script>
 
   <script type="text/javascript">
+    $(".loginform").keyup(function(event) {
+      if (event.keyCode === 13) {
+        $("#btn_login").click();
+      }
+    });
+
     $(document).ready(function(){
       $("#btn_login").click(function(){
         var email =  $("#email").val();
