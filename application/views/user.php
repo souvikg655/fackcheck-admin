@@ -25,6 +25,7 @@
                     <th>Identity Image</th>
                     <th>Approval</th>
                     <th>Points</th>
+                    <th>Homes</th>
                     <th>Date & Time</th>
                   </tr>
                 </thead>
@@ -58,28 +59,35 @@
                       <td>
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                           <button class="btn btn-<?php echo $button ?>" type="button"><?php echo $value ?></button>
-                          <?php
-                          if($value != "Accepted"){
-                            ?>
-                            <div class="btn-group" role="group">
-                              <button class="btn btn-<?php echo $button ?> dropdown-toggle btn-sm" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                              <div class="dropdown-menu dropdown-menu-right">
+                          
+                          <div class="btn-group" role="group">
+                            <button class="btn btn-<?php echo $button ?> dropdown-toggle btn-sm" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu dropdown-menu-right">
 
-                                <?php if($value == "Pending"){  ?>
-                                  <a type="button" class="dropdown-item user_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
-                                  
-                                  <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item user_reject" href="javascript:void(0);"  >Regected</a>
-                                <?php } ?>
-                                <?php if($value == "Regected"){  ?>
-                                  <a type="button" class="dropdown-item user_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
-                                <?php } ?>
+                              <?php if($value == "Pending"){  ?>
+                                <a type="button" class="dropdown-item user_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
+                                
+                                <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item user_reject" href="javascript:void(0);"  >Regected</a>
+                              <?php } ?>
+                              <?php if($value == "Regected"){  ?>
+                                <a type="button" class="dropdown-item user_accept" user_id="<?php echo $data[$i]->id; ?>" href="javascript:void(0);">Accepted</a>
+                              <?php } ?>
+                              <?php if($value == "Accepted"){  ?>
+                                <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item user_reject" href="javascript:void(0);"  >Regected</a>
+                              <?php } ?>
 
-                              </div>
                             </div>
-                          <?php } ?>
+                          </div>
+                          
                         </div>
                       </td>
                       <td><?php echo $data[$i]->points; ?></td>
+                      <td>
+                        <form method="POST" action="<?php echo base_url()?>homes/view_homes">
+                          <input type="hidden" name="user_id" value="<?php echo $data[$i]->id;?>">
+                          <input type="submit" class="btn btn-outline-primary" value="show">
+                        </form>
+                      </td>
                       <?php
                       $dt = new DateTime($data[$i]->created);
                       $date = $dt->format('d-m-Y');
@@ -167,6 +175,29 @@
         });
       });
 
+      // $(document).ready(function(){
+      //   $(".user_home").click(function(){
+      //     var id =  $(this).attr("user_id");
+          
+      //     var formdata = new FormData();
+      //     formdata.append("user_id", id);
+
+      //     var ajaxReq = $.ajax({
+      //       url: '<?php echo base_url()?>homes/user_homes',
+      //       type: 'POST',
+      //       processData: false,
+      //       contentType: false,
+      //       data: formdata,
+      //       beforeSend: function (xhr) {
+      //       },
+      //       success: function (data) {
+      //         console.log(data);
+      //         //window.location='<?php echo base_url()?>homes/user_homes', data;
+      //       },
+      //     });
+
+      //   });
+      // });
 
       
     </script>

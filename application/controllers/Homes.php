@@ -8,6 +8,20 @@ class Homes extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(['form', 'url']);
 		$this->load->model('home_model');
+		$this->load->model('user_model');
+	}
+
+	public function view_homes()
+	{
+		$user_id = $this->input->post('user_id');
+
+		$res = $this->user_model->fetch_user_homes($user_id);
+
+		$data= array();
+		$data['data'] = $res;
+
+		//print_r($data);
+		$this->load->view('user_homes', $data);
 	}
 
 	public function home_reject()

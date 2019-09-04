@@ -1,10 +1,9 @@
-﻿<?php include 'include/header.php' ?>
+<?php include 'include/header.php' ?>
 
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-home"></i> Homes</h1>
-      <p>View all homes</p>
+      <h4> ## Souvik Ghosh ## </h4>
     </div>
         <!-- <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>

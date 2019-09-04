@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://34.67.235.241/factcheck_admin/';
-//$config['base_url'] = 'http://localhost/factcheck_admin/';
+//$config['base_url'] = 'http://34.67.235.241/factcheck_admin/';
+$config['base_url'] = 'http://localhost/factcheck_admin/';
 
 /*
 |--------------------------------------------------------------------------
