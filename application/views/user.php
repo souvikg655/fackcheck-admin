@@ -19,6 +19,7 @@
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                   <tr>
+                    <th>Sl. No.</th>
                     <th>Name</th>
                     <th>Email</th> 
                     <th>Company</th>
@@ -35,6 +36,7 @@
                   for ($i = 0; $i<sizeof($data); $i++){
                     ?>
                     <tr>
+                      <td><?php echo $i+1; ?></td>
                       <td><?php echo $data[$i]->name; ?></td>
                       <td><?php echo $data[$i]->email; ?></td>
                       <td><?php echo $data[$i]->company; ?></td>

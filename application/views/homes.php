@@ -19,13 +19,13 @@
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                   <tr>
+                    <th>Sl. No.</th>
                     <th>Title</th>
                     <th>Realtor Name</th>
                     <th>Home Details</th>
-                    <th>Province</th>
-                    <th>Postal Code</th>
-                    <th>Address</th>
-                    <th>Municipality Paper</th>
+                    <th>Other Details</th>
+                    <th>Street Details</th>
+                    <th>Municipality Details</th>
                     <th>Status</th>
                     <th>Date</th>
                   </tr>
@@ -36,16 +36,22 @@
                   for ($i = 0; $i<sizeof($data); $i++){
                     ?>
                     <tr>
+                      <td><?php echo $i+1; ?></td>
                       <td><?php echo $data[$i]->title; ?></td>
                       <td><?php echo $data[$i]->name; ?></td>
                       <td>
-                        <a class="btn btn-outline-primary" href="javascript:void(0);" >Details</a> <!-- target="_blank" -->
+                        <?php echo "Bedroom: ".$data[$i]->bedroom."<br> Bathroom: ".$data[$i]->bathroom."<br> Type: ".$data[$i]->type."<br> Age: ".$data[$i]->age."<br> Area: ".$data[$i]->area." square foot <br> Beside Road: ".$data[$i]->beside_road."<br> House No: ".$data[$i]->house_no ?>
                       </td>
-                      <td><?php echo $data[$i]->province; ?></td>
-                      <td><?php echo $data[$i]->postal; ?></td>
-                      <td><?php echo $data[$i]->address; ?></td>
+                      
                       <td>
-                        <a class="btn btn-outline-primary" href="http://localhost/factcheck/municipality_papers/<?php echo $data[$i]->municipality_paper; ?>" target="_blank"><i class="fa fa-eye"></i> View</a>
+                        <?php echo "Province: ".$data[$i]->province."<br>Postal Code: ".$data[$i]->postal."<br>City: ".$data[$i]->city ?>
+                      </td>
+                      <td>
+                        <?php echo "Street name: ".$data[$i]->street_name."<br>Street No: ".$data[$i]->street_no."<br> Street Abbr.: ".$data[$i]->street_abbr."<br>Sale or Lease: ".$data[$i]->sale_lease ?>
+                      </td>
+                      <td>
+                        <a class="btn btn-outline-primary" href="http://localhost/factcheck/municipality_papers/<?php echo $data[$i]->municipality_paper; ?>" target="_blank"><i class="fa fa-eye"></i> View Paper</a>
+                        <?php echo "<br>Municipality Name: ".$data[$i]->municipality_name; ?>
                       </td>
                       <?php
                       $status_value = $data[$i]->status;
@@ -82,7 +88,7 @@
                               <?php
                               if($value == "Approved"){
                                 ?>
-                               <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item home_reject" href="javascript:void(0);" >Regected</a>
+                                <a type="button" user_id="<?php echo $data[$i]->id; ?>" class="dropdown-item home_reject" href="javascript:void(0);" >Regected</a>
                               <?php } ?>
 
                             </div>
