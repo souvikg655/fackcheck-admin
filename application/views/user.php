@@ -85,7 +85,7 @@
                       </td>
                       <td><?php echo $data[$i]->points; ?></td>
                       <td>
-                        <form method="POST" action="<?php echo base_url()?>homes/view_homes">
+                        <form method="POST" action="<?php echo base_url()?>homes/userHomes">
                           <input type="hidden" name="user_id" value="<?php echo $data[$i]->id;?>">
                           <input type="submit" class="btn btn-outline-primary" value="show">
                         </form>

@@ -11,7 +11,7 @@ class Homes extends CI_Controller {
 		$this->load->model('user_model');
 	}
 
-	public function view_homes()
+	public function userHomes()
 	{
 		$user_id = $this->input->post('user_id');
 
@@ -19,8 +19,6 @@ class Homes extends CI_Controller {
 
 		$data= array();
 		$data['data'] = $res;
-
-		//print_r($data);
 		$this->load->view('user_homes', $data);
 	}
 

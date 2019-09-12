@@ -118,7 +118,7 @@
           success: function (data) {
               var obj = JSON.parse(data);
               if(obj.status){
-                window.location='<?php echo base_url()?>user/users';
+                window.location='<?php echo base_url()?>users';
               }else{
                 toastr["error"]("Login Failed");
               }
