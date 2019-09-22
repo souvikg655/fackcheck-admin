@@ -39,7 +39,8 @@ class Home_model extends CI_model {
 		// Update apporoval status
 		$home_id = $data['home_id'];
 		$val = [
-		 	'status' => $data['type']
+		 	'status' => $data['type'],
+		 	'	reject_status' => ''
 		];
 
 		$this->db->where('id', $home_id);

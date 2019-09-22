@@ -12,6 +12,46 @@ class User_model extends CI_model {
 		return $query->result();
 	}
 
+	public function add_propertys($data){
+		$value = array(
+			'name' => $data['property'] ,
+			'status' => $data['status'],
+		);
+		$flag = $this->db->insert('property',$value);
+	
+	return $flag==1?true:flase;
+	}
+
+	public function fetch_proparty()
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('property');
+		$this->db->where('status', 1);
+		$query = $this -> db -> get();
+
+	return $query->result();
+	}
+
+	public function add_area($data){
+		$value = array(
+			'value' => $data['area'] ,
+			'status' => $data['status'],
+		);
+		$flag = $this->db->insert('area',$value);
+	
+	return $flag==1?true:flase;
+	}
+
+	public function fetch_area()
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('area');
+		$this->db->where('status', 1);
+		$query = $this -> db -> get();
+
+	return $query->result();
+	}
+
 	public function fetch_homes()
 	{
 		$this->db->select('homes.*, users.name')
@@ -57,6 +97,64 @@ class User_model extends CI_model {
 		$this->db->where('id', $user_id);
 		$this->db->update('users', $data);	
 		return true;
+	}
+
+	public function fetch_proparty_by_id($proparty_id){
+		$this -> db -> select('*');
+		$this -> db -> from('property');
+		$this->  db -> where('id', $proparty_id);
+		$query = $this -> db -> get();
+
+	return $query->result();
+	}
+
+	public function fetch_area_by_id($area_id){
+		$this -> db -> select('*');
+		$this -> db -> from('area');
+		$this->  db -> where('id', $area_id);
+		$query = $this -> db -> get();
+
+	return $query->result();
+	}
+
+	public function edit_proparty_by_id($data){
+		$value = [
+			'name' => $data['value'],
+		];
+
+		$this->db->where('id', $data['id']);
+		$this->db->update('property', $value);	
+	return true;
+	}
+
+	public function edit_area_by_id($data){
+		$value = [
+			'value' => $data['value'],
+		];
+
+		$this->db->where('id', $data['id']);
+		$this->db->update('area', $value);	
+	return true;
+	}
+
+	public function delete_proparty_by_id($proparty_id){
+		$value = [
+			'status' => '0',
+		];
+
+		$this->db->where('id', $proparty_id);
+		$this->db->update('property', $value);	
+	return true;
+	}
+
+	public function delete_area_by_id($area_id){
+		$value = [
+			'status' => '0',
+		];
+
+		$this->db->where('id', $area_id);
+		$this->db->update('area', $value);	
+	return true;
 	}
 
 }

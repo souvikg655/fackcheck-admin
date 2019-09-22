@@ -58,3 +58,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['users'] = "user/users";
 $route['homes'] = "user/homes";
 $route['user-home'] = "homes/userHomes";
+$route['add-property'] = "user/add_proparty";

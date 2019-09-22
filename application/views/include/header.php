@@ -105,6 +105,8 @@
           <li><a class="app-menu__item" href="<?php echo base_url()?>users"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Users</span></a></li>
 
           <li><a class="app-menu__item" href="<?php echo base_url()?>homes"><i class="app-menu__icon fa fa-home"></i><span class="app-menu__label">Homes</span></a></li>
+
+          <li><a class="app-menu__item" href="<?php echo base_url()?>add-property"><i class="app-menu__icon fa fa-plus"></i><span class="app-menu__label">Add Proparty</span></a></li>
         
       </ul>
     </aside>
