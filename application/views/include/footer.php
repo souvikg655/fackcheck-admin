@@ -33,7 +33,7 @@
     <script type="text/javascript">
       $('#demoNotify').click(function(){
         $.notify({
-            title: "Worning : ",
+            title: "Warning : ",
             message: "Please enter valid input",
             icon: 'fa fa-check' 
         },{
